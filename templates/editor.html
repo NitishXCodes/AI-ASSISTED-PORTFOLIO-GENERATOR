@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Portfolio Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='editor.css') }}">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <p class="small-title">
+                AI PORTFOLIO GENERATOR
+            </p>
+
+            <h1>
+                Turn your resume into a portfolio.
+            </h1>
+
+            <p class="description">
+                Paste your resume below and let AI transform
+                it into a professional portfolio website.
+            </p>
+
+        </div>
+
+
+        <!-- RESUME FORM -->
+
+        <form id="resumeForm">
+
+            <div class="editor-box">
+
+                <div class="editor-header">
+
+                    <span>RESUME</span>
+
+                    <span class="hint">
+                        Paste or write anything
+                    </span>
+
+                </div>
+
+                <textarea
+                    id="resume"
+                    name="resume"
+                    placeholder="Start writing or paste your resume here..."
+                    required></textarea>
+
+            </div>
+
+
+            <button type="submit"
+                    id="generateBtn">
+
+                <span id="buttonText">
+                    Generate Portfolio
+                </span>
+
+                <span id="arrow">
+                    →
+                </span>
+
+            </button>
+
+        </form>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer-text">
+
+            <span>Powered by</span>
+
+            <strong>Gemini AI</strong>
+
+            <span>•</span>
+
+            <span>Python Flask</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document.getElementById("resumeForm").addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const resume =
+            document.getElementById("resume").value;
+
+
+        const button =
+            document.getElementById("generateBtn");
+
+
+        const buttonText =
+            document.getElementById("buttonText");
+
+
+        const arrow =
+            document.getElementById("arrow");
+
+
+        /*
+         * Open the new tab immediately.
+         * This prevents the browser from blocking it.
+         */
+
+        const portfolioWindow =
+            window.open("", "_blank");
+
+
+        if (!portfolioWindow) {
+
+            alert(
+                "Please allow pop-ups for this website."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Show loading screen
+         * INSIDE THE NEW TAB.
+         */
+
+        portfolioWindow.document.write(`
+
+            <!DOCTYPE html>
+
+            <html>
+
+            <head>
+
+                <title>
+                    Creating Portfolio...
+                </title>
+
+                <style>
+
+                    * {
+                        box-sizing: border-box;
+                    }
+
+                    body {
+
+                        margin: 0;
+
+                        min-height: 100vh;
+
+                        display: flex;
+
+                        justify-content: center;
+
+                        align-items: center;
+
+                        background: #08080b;
+
+                        color: white;
+
+                        font-family: Arial, sans-serif;
+
+                    }
+
+                    .loading-box {
+
+                        width: 90%;
+
+                        max-width: 500px;
+
+                        padding: 50px 35px;
+
+                        text-align: center;
+
+                        background: #111116;
+
+                        border: 1px solid #333;
+
+                        border-radius: 16px;
+
+                        box-shadow:
+                            0 30px 100px
+                            rgba(0,0,0,0.7);
+
+                    }
+
+                    .ai-icon {
+
+                        font-size: 45px;
+
+                        margin-bottom: 20px;
+
+                    }
+
+                    .loader {
+
+                        width: 55px;
+
+                        height: 55px;
+
+                        margin: 0 auto 25px;
+
+                        border: 4px solid #333;
+
+                        border-top: 4px solid white;
+
+                        border-radius: 50%;
+
+                        animation:
+                            spin 1s linear infinite;
+
+                    }
+
+                    h1 {
+
+                        font-size: 24px;
+
+                        margin-bottom: 15px;
+
+                    }
+
+                    p {
+
+                        color: #999;
+
+                        line-height: 1.7;
+
+                    }
+
+                    .steps {
+
+                        margin-top: 30px;
+
+                        text-align: left;
+
+                    }
+
+                    .step {
+
+                        margin: 12px 0;
+
+                        color: #aaa;
+
+                    }
+
+                    .step span {
+
+                        display: inline-flex;
+
+                        width: 25px;
+
+                        height: 25px;
+
+                        align-items: center;
+
+                        justify-content: center;
+
+                        margin-right: 10px;
+
+                        border-radius: 50%;
+
+                        background: #222;
+
+                    }
+
+                    .waiting {
+
+                        margin-top: 25px;
+
+                        color: #555;
+
+                        font-size: 12px;
+
+                    }
+
+                    @keyframes spin {
+
+                        from {
+
+                            transform: rotate(0deg);
+
+                        }
+
+                        to {
+
+                            transform: rotate(360deg);
+
+                        }
+
+                    }
+
+                </style>
+
+            </head>
+
+
+            <body>
+
+                <div class="loading-box">
+
+                    <div class="ai-icon">
+                        ✨
+                    </div>
+
+                    <div class="loader"></div>
+
+                    <h1>
+                        AI is creating your portfolio...
+                    </h1>
+
+                    <p>
+                        Gemini AI is analyzing your resume
+                        and organizing your information.
+                    </p>
+
+                    <div class="steps">
+
+                        <div class="step">
+                            <span>✓</span>
+                            Reading resume
+                        </div>
+
+                        <div class="step">
+                            <span>2</span>
+                            Extracting information
+                        </div>
+
+                        <div class="step">
+                            <span>3</span>
+                            Creating portfolio
+                        </div>
+
+                    </div>
+
+                    <div class="waiting">
+                        Please wait...
+                    </div>
+
+                </div>
+
+            </body>
+
+            </html>
+
+        `);
+
+
+        /*
+         * Update original button.
+         */
+
+        button.disabled = true;
+
+        buttonText.textContent =
+            "Generating...";
+
+        arrow.textContent =
+            "⏳";
+
+
+        /*
+         * Send resume to Flask.
+         */
+
+        try {
+
+            const formData =
+                new FormData();
+
+            formData.append(
+                "resume",
+                resume
+            );
+
+
+            const response =
+                await fetch(
+                    "/generate",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+
+            /*
+             * Get the generated portfolio HTML.
+             */
+
+            const html =
+                await response.text();
+
+
+            /*
+             * Replace loading page
+             * with generated portfolio.
+             */
+
+            portfolioWindow.document.open();
+
+            portfolioWindow.document.write(
+                html
+            );
+
+            portfolioWindow.document.close();
+
+
+        }
+
+        catch (error) {
+
+            portfolioWindow.document.open();
+
+            portfolioWindow.document.write(`
+
+                <html>
+
+                <head>
+
+                    <title>
+                        Error
+                    </title>
+
+                    <style>
+
+                        body {
+
+                            background: #08080b;
+
+                            color: white;
+
+                            font-family: Arial;
+
+                            display: flex;
+
+                            align-items: center;
+
+                            justify-content: center;
+
+                            min-height: 100vh;
+
+                            text-align: center;
+
+                        }
+
+                        .error {
+
+                            max-width: 500px;
+
+                            padding: 40px;
+
+                        }
+
+                        p {
+
+                            color: #999;
+
+                        }
+
+                    </style>
+
+                </head>
+
+                <body>
+
+                    <div class="error">
+
+                        <h1>
+                            Something went wrong
+                        </h1>
+
+                        <p>
+                            We couldn't generate your
+                            portfolio.
+                        </p>
+
+                        <p>
+                            Please try again.
+                        </p>
+
+                    </div>
+
+                </body>
+
+                </html>
+
+            `);
+
+            portfolioWindow.document.close();
+
+            console.error(error);
+
+        }
+
+
+        /*
+         * Re-enable original button.
+         */
+
+        button.disabled = false;
+
+        buttonText.textContent =
+            "Generate Portfolio";
+
+        arrow.textContent =
+            "→";
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

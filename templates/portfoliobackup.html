@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ portfolio.name }} | Portfolio</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='portfolio.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- PRINT / DOWNLOAD -->
+
+    <div class="top-actions">
+
+        <button onclick="window.print()" class="print-btn">
+            Download / Print Resume
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            {{ portfolio.name }}
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#about">About</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="#education">Education</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#experience">Experience</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="hello">
+                HELLO, I'M
+            </p>
+
+            <h1>
+                {{ portfolio.name }}
+            </h1>
+
+
+            {% if portfolio.title %}
+
+            <p class="tagline">
+                {{ portfolio.title }}
+            </p>
+
+            {% endif %}
+
+
+            {% if portfolio.about %}
+
+            <p class="hero-description">
+                {{ portfolio.about }}
+            </p>
+
+            {% endif %}
+
+
+            <div class="hero-buttons">
+
+                <a href="#projects"
+                   class="btn primary">
+                    View Projects
+                </a>
+
+                <a href="#contact"
+                   class="btn secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    {% if portfolio.about %}
+
+    <section id="about"
+             class="section">
+
+        <div class="section-title">
+
+            <span>01</span>
+
+            <h2>About Me</h2>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <p>
+                {{ portfolio.about }}
+            </p>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- SKILLS -->
+
+    {% if portfolio.skills %}
+
+    <section id="skills"
+             class="section">
+
+        <div class="section-title">
+
+            <span>02</span>
+
+            <h2>Skills</h2>
+
+        </div>
+
+
+        <div class="skills-container">
+
+            {% for skill in portfolio.skills %}
+
+            <div class="skill-card">
+
+                {{ skill }}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- EDUCATION -->
+
+    {% if portfolio.education %}
+
+    <section id="education"
+             class="section">
+
+        <div class="section-title">
+
+            <span>03</span>
+
+            <h2>Education</h2>
+
+        </div>
+
+
+        <div class="timeline">
+
+            {% for education in portfolio.education %}
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+
+                <div class="timeline-content">
+
+
+                    {% if education.degree %}
+
+                    <h3>
+                        {{ education.degree }}
+                    </h3>
+
+                    {% endif %}
+
+
+                    {% if education.institution %}
+
+                    <p>
+                        {{ education.institution }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if education.year %}
+
+                    <small>
+                        {{ education.year }}
+                    </small>
+
+                    {% endif %}
+
+
+                    {% if education.details %}
+
+                    <p>
+                        {{ education.details }}
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- PROJECTS -->
+
+    {% if portfolio.projects %}
+
+    <section id="projects"
+             class="section">
+
+        <div class="section-title">
+
+            <span>04</span>
+
+            <h2>Projects</h2>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            {% for project in portfolio.projects %}
+
+            <div class="project-card">
+
+
+                <div class="project-number">
+
+                    PROJECT
+                    {{ "%02d" | format(loop.index) }}
+
+                </div>
+
+
+                {% if project.name %}
+
+                <h3>
+                    {{ project.name }}
+                </h3>
+
+                {% endif %}
+
+
+                {% if project.description %}
+
+                <p>
+                    {{ project.description }}
+                </p>
+
+                {% endif %}
+
+
+                {% if project.technologies %}
+
+                <div class="project-tech">
+
+
+                    {% for technology in project.technologies %}
+
+                    <span>
+                        {{ technology }}
+                    </span>
+
+                    {% endfor %}
+
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- EXPERIENCE -->
+
+    {% if portfolio.experience %}
+
+    <section id="experience"
+             class="section">
+
+        <div class="section-title">
+
+            <span>05</span>
+
+            <h2>Experience</h2>
+
+        </div>
+
+
+        <div class="experience-container">
+
+
+            {% for experience in portfolio.experience %}
+
+            <div class="experience-card">
+
+
+                {% if experience.position %}
+
+                <h3>
+                    {{ experience.position }}
+                </h3>
+
+                {% endif %}
+
+
+                {% if experience.company %}
+
+                <p>
+                    {{ experience.company }}
+                </p>
+
+                {% endif %}
+
+
+                {% if experience.duration %}
+
+                <small>
+                    {{ experience.duration }}
+                </small>
+
+                {% endif %}
+
+
+                {% if experience.description %}
+
+                <p>
+                    {{ experience.description }}
+                </p>
+
+                {% endif %}
+
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- ACHIEVEMENTS -->
+
+    {% if portfolio.achievements %}
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <span>06</span>
+
+            <h2>Achievements</h2>
+
+        </div>
+
+
+        <div class="achievements">
+
+
+            {% for achievement in portfolio.achievements %}
+
+            <div class="achievement">
+
+                <span>✓</span>
+
+                <p>
+                    {{ achievement }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- CERTIFICATIONS -->
+
+    {% if portfolio.certifications %}
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <span>07</span>
+
+            <h2>Certifications</h2>
+
+        </div>
+
+
+        <div class="skills-container">
+
+
+            {% for certification in portfolio.certifications %}
+
+            <div class="skill-card">
+
+                {{ certification }}
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- INTERESTS -->
+
+    {% if portfolio.interests %}
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <span>08</span>
+
+            <h2>Interests</h2>
+
+        </div>
+
+
+        <div class="skills-container">
+
+
+            {% for interest in portfolio.interests %}
+
+            <div class="skill-card">
+
+                {{ interest }}
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- LANGUAGES -->
+
+    {% if portfolio.languages %}
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <span>09</span>
+
+            <h2>Languages</h2>
+
+        </div>
+
+
+        <div class="skills-container">
+
+
+            {% for language in portfolio.languages %}
+
+            <div class="skill-card">
+
+                {{ language }}
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- CONTACT -->
+
+    <section id="contact"
+             class="contact-section">
+
+
+        <div class="section-title">
+
+            <span>10</span>
+
+            <h2>Let's Connect</h2>
+
+        </div>
+
+
+        <p>
+            Feel free to connect with me.
+        </p>
+
+
+        {% if portfolio.contact %}
+
+        <div class="contact-links">
+
+
+            <!-- EMAIL -->
+
+            {% if portfolio.contact.email %}
+
+            <a href="mailto:{{ portfolio.contact.email }}">
+
+                ✉ Email
+
+            </a>
+
+            {% endif %}
+
+
+
+            <!-- PHONE -->
+
+            {% if portfolio.contact.phone %}
+
+            <a href="tel:{{ portfolio.contact.phone }}">
+
+                ☎ Phone
+
+            </a>
+
+            {% endif %}
+
+
+
+            <!-- GITHUB -->
+
+            {% if portfolio.contact.github %}
+
+            <a href="{{ portfolio.contact.github }}"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                GitHub ↗
+
+            </a>
+
+            {% endif %}
+
+
+
+            <!-- LINKEDIN -->
+
+            {% if portfolio.contact.linkedin %}
+
+            <a href="{{ portfolio.contact.linkedin }}"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                LinkedIn ↗
+
+            </a>
+
+            {% endif %}
+
+
+
+            <!-- LOCATION -->
+
+            {% if portfolio.contact.location %}
+
+            <span class="contact-location">
+
+                📍 {{ portfolio.contact.location }}
+
+            </span>
+
+            {% endif %}
+
+
+        </div>
+
+        {% endif %}
+
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+
+            © {{ portfolio.name }}.
+            Created with AI Portfolio Generator.
+
+        </p>
+
+
+        <a href="/">
+
+            Create Your Portfolio
+
+        </a>
+
+    </footer>
+
+
+</body>
+
+</html>
