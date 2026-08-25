@@ -43,6 +43,30 @@ def generate():
 
     try:
 
+        uploaded_file = request.files.get("resume_file")
+
+        if uploaded_file:
+
+            if not uploaded_file.filename:
+                return """
+                <h2>No resume file selected.</h2>
+                <p>Please choose a PDF resume and try again.</p>
+                """
+
+            if not uploaded_file.filename.lower().endswith(".pdf"):
+                return """
+                <h2>Invalid resume file.</h2>
+                <p>Please upload your resume as a PDF file.</p>
+                """
+
+            if uploaded_file.read(4) != b"%PDF":
+                return """
+                <h2>Invalid resume file.</h2>
+                <p>The selected file is empty or is not a valid PDF.</p>
+                """
+
+            uploaded_file.seek(0)
+
         # --------------------------------
         # 1. GET RESUME FROM WEBSITE
         # --------------------------------

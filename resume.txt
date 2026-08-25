@@ -1,93 +1,68 @@
-# RESUME
+NAME: Rahul Sharma
 
-## Nitish
+TITLE: Computer Science Student | AI/ML Enthusiast
 
-📍 Uttar Pradesh, India
-📞 +91 XXXXX XXXXX
-✉️ [yourmail@gmail.com](mailto:yourmail@gmail.com)
-🔗 LinkedIn: linkedin.com/in/yourname
-🔗 GitHub: github.com/yourname
+ABOUT:
+I am a passionate Computer Science student interested in Artificial Intelligence,
+Machine Learning, and software development. I enjoy solving real-world problems
+through programming and building practical projects. I am continuously improving
+my technical skills and exploring new technologies.
 
----
+SKILLS:
+Python, Java, C, HTML, CSS, JavaScript, SQL, Git, GitHub, NumPy, Pandas,
+Matplotlib, Machine Learning
 
-## CAREER OBJECTIVE
+EDUCATION:
+B.Tech in Computer Science and Engineering
+ABC University
+2024 - 2028
 
-Motivated and hardworking college student seeking opportunities to improve technical skills and gain practical experience. Interested in software development, Python, Java, web development, and building real-world projects.
+EXPERIENCE:
+AI/ML Intern
+XYZ Technologies
+June 2026 - July 2026
+Worked on basic machine learning models and data preprocessing.
+Created Python scripts for data analysis and visualization.
 
-## EDUCATION
+PROJECTS:
 
-**Bachelor of Technology (B.Tech)**
-GLA University, Mathura
-2024 – Present
+1. Student Placement Prediction System
+Developed a machine learning project that predicts whether a student is likely
+to get placed based on academic performance, skills, internships, and other
+relevant factors.
+Technologies: Python, Pandas, Scikit-learn, Machine Learning
 
-**Class 12th**
-School Name
-Year: 2024
+2. Personal Portfolio Website
+Created a responsive personal portfolio website to showcase skills, projects,
+certifications, and achievements.
+Technologies: HTML, CSS, JavaScript, GSAP
 
-**Class 10th**
-School Name
-Year: 2022
+3. Smart Resume Analyzer
+Built an AI-based system that analyzes resumes and provides an estimated ATS
+score along with suggestions for improving the resume.
+Technologies: Python, Flask, HTML, CSS, JavaScript
 
-## TECHNICAL SKILLS
+CERTIFICATIONS:
 
-* Python
-* Java
-* C
-* HTML
-* CSS
-* JavaScript
-* SQL
-* Git & GitHub
-* Flask
-* Basic Data Structures & Algorithms
+1. Microsoft Azure Fundamentals (AZ-900)
+Issuer: Microsoft
 
-## PROJECTS
+2. Python Programming Certification
+Issuer: Forage
 
-### AI Resume Portfolio Generator
+3. Machine Learning Fundamentals
+Issuer: Coursera
 
-* Developed a web application using Python and Flask.
-* Takes resume information as input and generates a professional portfolio.
-* Integrated Gemini API for AI-based content generation.
-* Used HTML, CSS, and JavaScript for the frontend.
+4. Web Development Certification
+Issuer: Udemy
 
-### Student Management System
+ACHIEVEMENTS:
+Solved 100+ problems on LeetCode.
+Participated in technical hackathons and coding competitions.
 
-* Created a basic student management application.
-* Implemented student data entry, searching, and management features.
-* Used programming concepts such as functions, loops, and data structures.
-
-## CERTIFICATIONS
-
-* Python Programming — [Platform/Institute]
-* Java Programming — [Platform/Institute]
-* Web Development — [Platform/Institute]
-
-## STRENGTHS
-
-* Quick learner
-* Problem-solving skills
-* Teamwork
-* Communication
-* Time management
-
-## LANGUAGES
-
-* Hindi
-* English
-
-## INTERESTS
-
-* Programming
-* Web Development
-* Artificial Intelligence
-* Technology
-
-## DECLARATION
-
-I hereby declare that the information provided above is true and correct to the best of my knowledge.
-
-**Place:** __________
-**Date:** __________
-
-**Signature:**
-Nitish
+CONTACT:
+Email: rahulsharma@example.com
+Phone: +91 9876543210
+GitHub: https://github.com/rahulsharma
+LinkedIn: https://linkedin.com/in/rahulsharma
+LeetCode: https://leetcode.com/rahulsharma
